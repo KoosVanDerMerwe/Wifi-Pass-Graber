@@ -19,6 +19,17 @@ $wifiProfiles = $profileNames | ForEach-Object {
     }
 } | Format-Table -AutoSize | Out-String
 
+# Define the path to save the file
 $tempPath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), 'wifi-pass.txt')
+
+# Save the profiles to the file
 $wifiProfiles | Out-File -FilePath $tempPath -Encoding UTF8
+
+# Output the location of the saved file
 Write-Output "File saved to: $tempPath"
+
+# Cleanup unnecessary variables (optional but good practice)
+Remove-Variable profiles, profileNames, wifiProfiles, profileDetails, passMatch, name, pass
+
+# Force garbage collection to clean up memory
+[System.GC]::Collect()
